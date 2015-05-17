@@ -34,6 +34,14 @@ class Node {
 		* that the current node is connected to 
 		*/
 		Node * getNext();
+
+		/*
+		* Function : setNext(Pointer to a node in the list)
+		* -------------------------------------------------
+		* Sets the next pointer to the pointer that is supplied
+		* in the argument
+		*/
+		void setNext(Node<ElemType>* newNext);
 	private : 
 		Node * next;
 		ElemType nodeData;
@@ -71,4 +79,9 @@ void Node<ElemType>::setData(ElemType data) {
 template <typename ElemType>
 Node<ElemType>* Node<ElemType>::getNext() {
 	return next;
+}
+
+template <typename ElemType>
+void Node<ElemType>::setNext(Node<ElemType>* newNext) {
+	next = newNext;
 }

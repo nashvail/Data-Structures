@@ -5,3 +5,4 @@
 * List Currently includes implementation of  
 	* Linked List (C++)
 		* Mth Node from end without explicitly knowing the size of list.
+		* To find if the given linked list is cyclic/circular
