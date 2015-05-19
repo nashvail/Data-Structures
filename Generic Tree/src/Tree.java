@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /*
 * Class : Tree<T>
 * ------------------------------
@@ -5,12 +7,17 @@
 */
 public class Tree<T> {
     // There will be a root element for the tree
-    public Node<T> rootNode;
+    private Node<T> rootNode;
+    // Stores references to all the nodes that are present in the tree for easy access
+    private ArrayList<Node<T>> nodes;
+    // Number of nodes in the tree
+    private int numNodes;
 
     /*
     * Default constructor
     */
     public Tree() {
+        numNodes = 0;
     }
 
     /*
@@ -33,5 +40,14 @@ public class Tree<T> {
         this.rootNode = rootNode;
     }
 
-    
+
+    /*
+    * Function : getNumNodes()
+    * ---------------------------------------------
+    * Returns the total number of nodes present in
+    * the tree.
+    */
+    public int getNumNodes() {
+        return numNodes;
+    }
 }
