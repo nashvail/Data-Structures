@@ -37,12 +37,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BST.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BST.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BST.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.17660551" vertical-offset="0" max-vertical-offset="872">
-              <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="228" max-vertical-offset="1298">
+              <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+              <folding>
+                <element signature="e#258#259#0" expanded="true" />
+                <element signature="e#303#304#0" expanded="true" />
+                <element signature="e#1053#1054#0" expanded="true" />
+                <element signature="e#1091#1092#0" expanded="true" />
+                <element signature="e#1145#1146#0" expanded="true" />
+                <element signature="e#1185#1186#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Node.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Node.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.35321102" vertical-offset="0" max-vertical-offset="872">
+              <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+              <folding>
+                <element signature="e#332#333#0" expanded="true" />
+                <element signature="e#363#364#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -54,6 +74,7 @@
       <list>
         <option value="$PROJECT_DIR$/src/Client.java" />
         <option value="$PROJECT_DIR$/src/BST.java" />
+        <option value="$PROJECT_DIR$/src/Node.java" />
       </list>
     </option>
   </component>
@@ -287,6 +308,9 @@
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="3bc46ca0-bcf8-4349-9d3b-aca6b5a6ade3" name="Default" comment="" />
@@ -362,9 +386,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BST.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17660551" vertical-offset="0" max-vertical-offset="872">
-          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="228" max-vertical-offset="1298">
+          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+          <folding>
+            <element signature="e#258#259#0" expanded="true" />
+            <element signature="e#303#304#0" expanded="true" />
+            <element signature="e#1053#1054#0" expanded="true" />
+            <element signature="e#1091#1092#0" expanded="true" />
+            <element signature="e#1145#1146#0" expanded="true" />
+            <element signature="e#1185#1186#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35321102" vertical-offset="0" max-vertical-offset="872">
+          <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+          <folding>
+            <element signature="e#332#333#0" expanded="true" />
+            <element signature="e#363#364#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
