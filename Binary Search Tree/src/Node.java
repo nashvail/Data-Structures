@@ -9,8 +9,8 @@
 public class Node<Integer> {
 
     int nodeData;
-    Node leftChild;
-    Node rightChild;
+    Node<Integer> leftChild;
+    Node<Integer> rightChild;
 
     /*
     * Default constructor
