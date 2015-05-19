@@ -6,48 +6,42 @@ import java.util.ArrayList;
  * File : BST.java/(Binary Search Tree)
  * -------------------------------------
  */
-public class BST<T>{
-    ArrayList<T> allNodes;
+public class BST<Integer> {
+    private Node<Integer> root;
+    private int numNodes;
 
     /*
     * Default constructor
     */
     public BST() {
-        allNodes = new ArrayList<T>();
+        root = null;
+        numNodes = 0;
     }
 
-    public void addNode() {
-
-    }
-
-
-    ///// Private method declarations
-
-    /*
-    * Function : toSimpleIndex(int actualIndex)
-    * -----------------------------------------------
-    * To represent a simple binary search tree we are
-    * using a flat ArrayList to properly deal with the
-    * storage overhead of storing pointers to children.
-    *
-    * In a Binary Search Tree the numbering of Nodes
-    * starts with 1 rather than 0 as in an ArrayList,
-    * This method adds 1 to actualIndex that is passed
-    * in as the parameter, that is all it does.
-    *
-    * If 0(actualIndex) is passed it returns (0 + 1) i.e. 1(simpleIndex)
-    * If 1 is passed it returns (1 + 1) i.e. 2
-    */
-
-    private int toSimpleIndex(int actualIndex) {
-        return actualIndex + 1;
-    }
-
-    private int getParentIndex(int childNodeIndex) {
-        return  childNodeIndex/2;
+    public void addNode(Node<Integer> newNode) {
+        if(numNodes == 0)
+            root = newNode;
+        else
+           insertNode(root, newNode);
     }
 
 
-
+    public void insertNode(Node<Integer> currentParent, Node<Integer> newNode) {
+        if (newNode.getNodeData() < currentParent.getNodeData()) {
+            if(currentParent.getLeftChild() == null) {
+                currentParent.setLeftChild(newNode);
+                return;
+            } else {
+                insertNode(currentParent.getLeftChild(), newNode);
+            }
+        } else {
+            if(currentParent.getRightChild() == null) {
+                currentParent.setRightChild(newNode);
+                return;
+            } else {
+                insertNode(currentParent.getRightChild(), newNode);
+            }
+        }
+    }
 
 }
