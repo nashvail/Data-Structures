@@ -29,6 +29,27 @@ public class BST<Integer> {
     }
 
 
+
+    /*
+    * Function : preorderTraversal()
+    * -------------------------------------------------------
+    * Wrapper Function for recPreorderTraversal(Node<Integer>)
+    * Performs and prints the tree following Pre Order route
+    */
+    public void preorderTraversal() {
+        recPreorderTraversal(root);
+    }
+
+    private void recPreorderTraversal(Node<Integer> currentNode) {
+        if(currentNode == null) return;
+
+        System.out.println(currentNode.getNodeData());
+        recPreorderTraversal(currentNode.getLeftChild());
+        recPreorderTraversal(currentNode.getRightChild());
+    }
+
+
+
     /*
     * Function : getTreeHeight()
     * ---------------------------------------------------
