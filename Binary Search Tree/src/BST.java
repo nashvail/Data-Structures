@@ -45,11 +45,13 @@ public class BST<Integer> {
             else
                 insertNode(currentParent.getLeftChild(), newNode);
 
-        } else {
+        } else if(newNode.getNodeData() > currentParent.getNodeData()){
             if(currentParent.getRightChild() == null)
                 currentParent.setRightChild(newNode);
             else
                 insertNode(currentParent.getRightChild(), newNode);
+        } else {
+            // Avoid duplicate entries : ignore the input here
         }
     }
 
