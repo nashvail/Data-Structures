@@ -6,6 +6,9 @@
 	* Linked List (C++)
 		* Mth Node from end without explicitly knowing the size of list.
 		* To find if the given linked list is cyclic/circular
+		
 	* Generic Tree (Java)
+	
 	* Binary Search Tree (Java)
 		* Recursive calculation of Tree Height
+		* Recursive Traversals (Pre Order)
