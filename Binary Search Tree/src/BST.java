@@ -30,6 +30,33 @@ public class BST<Integer> {
 
 
     /*
+    * Function : getTreeHeight()
+    * ---------------------------------------------------
+    * Wrapper function. Returns the height of tree by
+    * calling the recursive method calculateTreeHeight().
+    */
+    public int getTreeHeight() {
+        return calculateTreeHeight(root);
+    }
+
+    /*
+    * Function : calculateTreeHeight(Node<Integer>)
+    * ----------------------------------------------------
+    * Recursive method to calculate the Tree's height. Height
+    * of a tree is defined as the maximum distance between the
+    * root node and any one of the leaf nodes.
+    * Recursively : Height of the tree is equal to, 1 + height
+    * of the tallest subtree.
+     */
+    private int calculateTreeHeight(Node<Integer> currentNode) {
+        if(currentNode == null) return 0;
+        return (1 + Math.max(calculateTreeHeight(currentNode.getLeftChild()),
+                        calculateTreeHeight(currentNode.getRightChild()))
+               );
+    }
+
+
+    /*
     * Function : insertNode(Parent under consideration, Node to be inserted)
     * ----------------------------------------------------------------------
     * Recursively inserts a new node at its proper place in the tree.
