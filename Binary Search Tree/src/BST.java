@@ -8,23 +8,19 @@ import java.util.ArrayList;
  */
 public class BST<Integer> {
     private Node<Integer> root;
-    private int numNodes;
 
     /*
     * Default constructor
     */
     public BST() {
         root = null;
-        numNodes = 0;
     }
 
     public void addNode(Node<Integer> newNode) {
-        if(numNodes == 0) {
+        if(root == null) {
             root = newNode;
-            numNodes++;
         } else {
             insertNode(root, newNode);
-            numNodes++;
         }
     }
 
@@ -40,18 +36,20 @@ public class BST<Integer> {
     */
     public void insertNode(Node<Integer> currentParent, Node<Integer> newNode) {
         if (newNode.getNodeData() < currentParent.getNodeData()) {
-            if(currentParent.getLeftChild() == null)
+            if(currentParent.getLeftChild() == null) {
                 currentParent.setLeftChild(newNode);
-            else
+            } else {
                 insertNode(currentParent.getLeftChild(), newNode);
+            }
 
         } else if(newNode.getNodeData() > currentParent.getNodeData()){
-            if(currentParent.getRightChild() == null)
+            if(currentParent.getRightChild() == null) {
                 currentParent.setRightChild(newNode);
-            else
+            } else {
                 insertNode(currentParent.getRightChild(), newNode);
+            }
         } else {
-            // Avoid duplicate entries : ignore the input here
+            // Avoid duplicate entries : ignore the input
         }
     }
 
