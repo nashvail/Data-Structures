@@ -137,25 +137,25 @@ Node<ElemType>* LinkedList<ElemType>::mthNodeFromEnd(int m) {
 
 template <typename ElemType>
 bool LinkedList<ElemType>::isCyclic() {
-	// you will need two node pointer here one fast and one slow pointer 
+	// will need two node pointers here one fast and one slow  
 	// we will increment these pointers at different speeds
 	Node<ElemType>* fastPointer;
 	Node<ElemType>* slowPointer;
-	// set the slowPointer to the head of the linked list
+	// set the slowPointer at the head of the linked list
 	slowPointer = head;
-	// set the slowPointer ahead of the fastPointer
+	// set the slowPointer one ahead of the fastPointer
 	fastPointer = head->getNext();
 
 	// Now we will traverse the list 
 	while(true) {
-		// In a cyclic list no pointer will ever reach dead end 
+		// In a cyclic list no pointer will ever reach a dead end 
 		if(!fastPointer || !fastPointer->getNext())
 			return false;
 		else if(fastPointer == slowPointer || fastPointer->getNext() == slowPointer) {
-			// the slow and the fast pointer will overalp in a cyclic list 
+			// the fastPointer will catch up with the slowPointer in a cyclic List
 			return true;
 		}else{
-			// advance the two pointers ahead in the list
+			// advance the slowPointer once and fastPointer twice
 			slowPointer = slowPointer->getNext();
 			fastPointer = fastPointer->getNext()->getNext();
 		}
