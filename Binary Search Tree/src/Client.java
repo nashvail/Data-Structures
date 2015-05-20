@@ -15,6 +15,5 @@ public class Client {
 
 
         tree.preorderTraversal();
-
     }
 }

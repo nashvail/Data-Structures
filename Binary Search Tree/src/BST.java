@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Stack;
 
 /*
  * Created by Nash on 19/05/15.
@@ -8,6 +9,7 @@ import java.util.ArrayList;
  */
 public class BST<Integer> {
     private Node<Integer> root;
+
 
     /*
     * Default constructor
@@ -29,6 +31,27 @@ public class BST<Integer> {
     }
 
 
+    /*
+    * Function : nonRecursivePreorderTraversal()
+    * ------------------------------------------------------------
+    * Non recursive pre order traversal using Stack class.
+    */
+    public void nonRecursivePreorderTraversal() {
+        Stack<Node<Integer>> nodeStack = new Stack<Node<Integer>>();
+        nodeStack.push(root);
+
+        while(!nodeStack.empty()){
+            Node<Integer> currentNode = nodeStack.pop();
+            System.out.println(currentNode.getNodeData());
+
+            Node<Integer> currentNodeRightChild = currentNode.getRightChild();
+            Node<Integer> currentNodeLeftChild = currentNode.getLeftChild();
+
+            if(currentNodeRightChild != null) nodeStack.push(currentNodeRightChild);
+            if(currentNodeLeftChild != null) nodeStack.push(currentNodeLeftChild);
+        }
+
+    }
 
     /*
     * Function : preorderTraversal()
