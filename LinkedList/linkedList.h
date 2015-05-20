@@ -143,7 +143,7 @@ bool LinkedList<ElemType>::isCyclic() {
 	Node<ElemType>* slowPointer;
 	// set the slowPointer at the head of the linked list
 	slowPointer = head;
-	// set the slowPointer one ahead of the fastPointer
+	// set the fastPointer one ahead of the slowPointer
 	fastPointer = head->getNext();
 
 	// Now we will traverse the list 
