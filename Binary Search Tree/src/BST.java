@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Stack;
 
 /*
@@ -30,6 +29,61 @@ public class BST<Integer> {
         return root;
     }
 
+    /*
+    * Function : getLowestCommonAncestor(First Node, Second Node)
+    * -----------------------------------------------------------------------------
+    * Returns lowest common ancestor for any two supplied nodes that exist in the
+    * Tree.
+    * Lowest, in Lowest Common Ancestor doesn't mean "lowest" value. It describes
+    * the position of the ancestor, the one that is lowest in the tree.
+    * Is non-recursive, avoids call stack memory overhead
+    */
+    public Node<Integer> getLowestCommonAncestor(Node<Integer> n1, Node<Integer> n2) {
+        if(n1 == null || n2 == null) return null;
+
+        int firstNodeValue = n1.getValue();
+        int secondNodeValue = n2.getValue();
+
+        Node<Integer> currentNode = root;
+
+        while(currentNode != null) {
+            int currentNodeValue = currentNode.getValue();
+            if(firstNodeValue < currentNodeValue && secondNodeValue < currentNodeValue) {
+                currentNode = currentNode.getLeftChild();
+            } else if(firstNodeValue > currentNodeValue && secondNodeValue > currentNodeValue) {
+                currentNode = currentNode.getRightChild();
+            } else {
+                // if the value is somewhere in between
+                return currentNode;
+            }
+        }
+
+        return null;
+    }
+
+    /*
+    * Function : getNode(Value of the node that is to be found)
+    * ---------------------------------------------------------
+    * Returns Node<Integer> which holds value equal to the one
+    * that is supplied in the argument.
+    * Returns null if no such node is found.
+    * Is non-recursive, avoids call stack memory overhead
+    */
+    public Node<Integer> getNode(int searchValue) {
+        Node<Integer> currentNode = root;
+        while(currentNode != null) {
+            int currentNodeValue = currentNode.getValue();
+            if(currentNodeValue == searchValue)
+                return currentNode;
+            else if(searchValue < currentNodeValue)
+                currentNode = currentNode.getLeftChild();
+            else
+                currentNode = currentNode.getRightChild();
+        }
+
+        // if no node with given value is found
+        return null;
+    }
 
     /*
     * Function : nonRecursivePreorderTraversal()
@@ -42,7 +96,7 @@ public class BST<Integer> {
 
         while(!nodeStack.empty()){
             Node<Integer> currentNode = nodeStack.pop();
-            System.out.println(currentNode.getNodeData());
+            System.out.println(currentNode.getValue());
 
             Node<Integer> currentNodeRightChild = currentNode.getRightChild();
             Node<Integer> currentNodeLeftChild = currentNode.getLeftChild();
@@ -66,7 +120,7 @@ public class BST<Integer> {
     private void recPreorderTraversal(Node<Integer> currentNode) {
         if(currentNode == null) return;
 
-        System.out.println(currentNode.getNodeData());
+        System.out.println(currentNode.getValue());
         recPreorderTraversal(currentNode.getLeftChild());
         recPreorderTraversal(currentNode.getRightChild());
     }
@@ -106,14 +160,14 @@ public class BST<Integer> {
     * Recursively inserts a new node at its proper place in the tree.
     */
     public void insertNode(Node<Integer> currentParent, Node<Integer> newNode) {
-        if (newNode.getNodeData() < currentParent.getNodeData()) {
+        if (newNode.getValue() < currentParent.getValue()) {
             if(currentParent.getLeftChild() == null) {
                 currentParent.setLeftChild(newNode);
             } else {
                 insertNode(currentParent.getLeftChild(), newNode);
             }
 
-        } else if(newNode.getNodeData() > currentParent.getNodeData()){
+        } else if(newNode.getValue() > currentParent.getValue()){
             if(currentParent.getRightChild() == null) {
                 currentParent.setRightChild(newNode);
             } else {

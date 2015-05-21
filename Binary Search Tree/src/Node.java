@@ -8,7 +8,7 @@
  */
 public class Node<Integer> {
 
-    int nodeData;
+    int value;
     Node<Integer> leftChild;
     Node<Integer> rightChild;
 
@@ -25,26 +25,26 @@ public class Node<Integer> {
     * Convenience constructor
     */
     public Node(int data) {
-        nodeData = data;
+        value = data;
         leftChild = null;
         rightChild = null;
     }
 
     /*
-    * Function : getNodeData()
+    * Function : getValue()
     * -------------------------------------
     * Returns the data that the node holds.
     */
-    public int getNodeData() {
-        return nodeData;
+    public int getValue() {
+        return value;
     }
 
     /*
-    * Function : setNodeData()
+    * Function : setValue()
     * -------------------------------------
     */
-    public void setNodeData(int data) {
-        nodeData = data;
+    public void setValue(int data) {
+        value = data;
     }
 
     /*
