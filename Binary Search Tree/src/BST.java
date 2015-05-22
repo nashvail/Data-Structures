@@ -24,6 +24,33 @@ public class BST<Integer> {
     ///////////////////// PUBLIC METHODS
 
     /*
+    * Function : convertToHeap()
+    * ---------------------------------------------------
+    * Converts the Binary Search Tree into Min Heap tree.
+    * Only rearranges the current tree to resemble a Heap
+    * tree.
+    * Goes through pouring data in and out of array in doing
+    * so.
+    */
+    public void convertToHeap() {
+
+        // An array of nodes
+    }
+
+    private int traverse(Node node, int count, Node[] arr) {
+        if(node == null)
+            return count;
+        if(arr != null)
+            arr[count] = node;
+        count++;
+        count = traverse(node.getLeftChild(), count, arr);
+        // Note that though the value of count is reassigned it is also passed as the
+        // argument for traverse in the line below, so no data is lost
+        count = traverse(node.getRightChild(), count, arr);
+        return count;
+    }
+
+    /*
     * Function : addNode(Node to be added to the tree)
     * --------------------------------------------------
     * Takes in a Node<Integer> as argument, adds that node
