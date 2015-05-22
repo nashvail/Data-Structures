@@ -17,6 +17,18 @@ public class BST<Integer> {
         root = null;
     }
 
+    public Node<Integer> getRootNode() {
+        return root;
+    }
+
+    ///////////////////// PUBLIC METHODS
+
+    /*
+    * Function : addNode(Node to be added to the tree)
+    * --------------------------------------------------
+    * Takes in a Node<Integer> as argument, adds that node
+    * to the tree.
+    */
     public void addNode(Node<Integer> newNode) {
         if(root == null) {
             root = newNode;
@@ -25,9 +37,18 @@ public class BST<Integer> {
         }
     }
 
-    public Node<Integer> getRootNode() {
-        return root;
+
+    /*
+    * Function : add(Value that is to be added)
+    * ----------------------------------------------
+    * Creates a new node implicitly with value equal
+    * to what is passed as the argument.
+    * Adds the newly created node to the tree.
+     */
+    public void add(int value) {
+        addNode(new Node<Integer>(value));
     }
+
 
     /*
     * Function : getLowestCommonAncestor(First Node, Second Node)
@@ -117,16 +138,6 @@ public class BST<Integer> {
         recPreorderTraversal(root);
     }
 
-    private void recPreorderTraversal(Node<Integer> currentNode) {
-        if(currentNode == null) return;
-
-        System.out.println(currentNode.getValue());
-        recPreorderTraversal(currentNode.getLeftChild());
-        recPreorderTraversal(currentNode.getRightChild());
-    }
-
-
-
     /*
     * Function : getTreeHeight()
     * ---------------------------------------------------
@@ -136,6 +147,18 @@ public class BST<Integer> {
     public int getTreeHeight() {
         return calculateTreeHeight(root);
     }
+
+
+    //////////////////////// PRIVATE METHODS
+
+    private void recPreorderTraversal(Node<Integer> currentNode) {
+        if(currentNode == null) return;
+
+        System.out.println(currentNode.getValue());
+        recPreorderTraversal(currentNode.getLeftChild());
+        recPreorderTraversal(currentNode.getRightChild());
+    }
+
 
     /*
     * Function : calculateTreeHeight(Node<Integer>)
@@ -159,7 +182,7 @@ public class BST<Integer> {
     * ----------------------------------------------------------------------
     * Recursively inserts a new node at its proper place in the tree.
     */
-    public void insertNode(Node<Integer> currentParent, Node<Integer> newNode) {
+    private void insertNode(Node<Integer> currentParent, Node<Integer> newNode) {
         if (newNode.getValue() < currentParent.getValue()) {
             if(currentParent.getLeftChild() == null) {
                 currentParent.setLeftChild(newNode);
