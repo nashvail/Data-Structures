@@ -1,4 +1,6 @@
+import java.util.Comparator;
 import java.util.Stack;
+import java.util.Arrays;
 
 /*
  * Created by Nash on 19/05/15.
@@ -31,10 +33,36 @@ public class BST<Integer> {
     * tree.
     * Goes through pouring data in and out of array in doing
     * so.
+    * Tree can be reordered into Heap without going through
+    * an array in the middle, we will create a function to do
+    * that later.
     */
     public void convertToHeap() {
+        // Count the number of nodes in the tree
+        // to create a static array of that size
+        int numNodes = traverse(root, 0, null);
+        Node[] nodeArray = new Node[numNodes];
+        // Put all the nodes into the array created above
+        traverse(root, 0, nodeArray);
 
-        // An array of nodes
+        // Sort the array based on the value of node
+        // since we're creating Min Heap the array will be sorted in ascending order
+        Arrays.sort(nodeArray, new Comparator<Node>() {
+            @Override
+            public int compare(Node m, Node n) {
+                int mValue = m.getValue();
+                int nValue = n.getValue();
+                return (mValue < nValue ? -1 : (mValue == nValue) ? 0 : 1);
+            }
+        });
+
+        // Reassigning positions in the tree so as to create a Min Heap
+        for(int i = 0 ;i < numNodes ; i++) {
+            int leftChildIndex = 2 * i;
+            int rightChildIndex = leftChildIndex + 1;
+            nodeArray[i].setLeftChild(leftChildIndex >= numNodes ? null : nodeArray[leftChildIndex]);
+            nodeArray[i].setRightChild(rightChildIndex >= numNodes ? null : nodeArray[rightChildIndex]);
+        }
     }
 
     private int traverse(Node node, int count, Node[] arr) {
