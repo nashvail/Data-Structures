@@ -86,14 +86,14 @@ public class BST<Integer> {
     }
 
     /*
-    * Function : getNode(Value of the node that is to be found)
+    * Function : findNode(Value of the node that is to be found)
     * ---------------------------------------------------------
     * Returns Node<Integer> which holds value equal to the one
     * that is supplied in the argument.
     * Returns null if no such node is found.
     * Is non-recursive, avoids call stack memory overhead
     */
-    public Node<Integer> getNode(int searchValue) {
+    public Node<Integer> findNode(int searchValue) {
         Node<Integer> currentNode = root;
         while(currentNode != null) {
             int currentNodeValue = currentNode.getValue();
