@@ -25,58 +25,6 @@ public class BST<Integer> {
 
     ///////////////////// PUBLIC METHODS
 
-    /*
-    * Function : convertToHeap()
-    * ---------------------------------------------------
-    * Converts the Binary Search Tree into Min Heap tree.
-    * Only rearranges the current tree to resemble a Heap
-    * tree.
-    * Goes through pouring data in and out of array in doing
-    * so.
-    * Tree can be reordered into Heap without going through
-    * an array in the middle, we will create a function to do
-    * that later.
-    */
-    public void convertToHeap() {
-        // Count the number of nodes in the tree
-        // to create a static array of that size
-        int numNodes = traverse(root, 0, null);
-        Node[] nodeArray = new Node[numNodes];
-        // Put all the nodes into the array created above
-        traverse(root, 0, nodeArray);
-
-        // Sort the array based on the value of node
-        // since we're creating Min Heap the array will be sorted in ascending order
-        Arrays.sort(nodeArray, new Comparator<Node>() {
-            @Override
-            public int compare(Node m, Node n) {
-                int mValue = m.getValue();
-                int nValue = n.getValue();
-                return (mValue < nValue ? -1 : (mValue == nValue) ? 0 : 1);
-            }
-        });
-
-        // Reassigning positions in the tree so as to create a Min Heap
-        for(int i = 0 ;i < numNodes ; i++) {
-            int leftChildIndex = 2 * i;
-            int rightChildIndex = leftChildIndex + 1;
-            nodeArray[i].setLeftChild(leftChildIndex >= numNodes ? null : nodeArray[leftChildIndex]);
-            nodeArray[i].setRightChild(rightChildIndex >= numNodes ? null : nodeArray[rightChildIndex]);
-        }
-    }
-
-    private int traverse(Node node, int count, Node[] arr) {
-        if(node == null)
-            return count;
-        if(arr != null)
-            arr[count] = node;
-        count++;
-        count = traverse(node.getLeftChild(), count, arr);
-        // Note that though the value of count is reassigned it is also passed as the
-        // argument for traverse in the line below, so no data is lost
-        count = traverse(node.getRightChild(), count, arr);
-        return count;
-    }
 
     /*
     * Function : addNode(Node to be added to the tree)
@@ -203,6 +151,74 @@ public class BST<Integer> {
         return calculateTreeHeight(root);
     }
 
+
+
+    /*
+    * Function : convertToHeap()
+    * ---------------------------------------------------
+    * Converts the Binary Search Tree into Min Heap tree.
+    * Only rearranges the current tree to resemble a Heap
+    * tree.
+    * Goes through pouring data in and out of array in doing
+    * so.
+    * Tree can be reordered into Heap without going through
+    * an array in the middle, we will create a function to do
+    * that later.
+    */
+    public void convertToHeap() {
+        // Count the number of nodes in the tree
+        // to create a static array of that size
+        int numNodes = traverse(root, 0, null);
+        Node[] nodeArray = new Node[numNodes];
+        // Put all the nodes into the array created above
+        traverse(root, 0, nodeArray);
+
+        // Sort the array based on the value of node
+        // since we're creating Min Heap the array will be sorted in ascending order
+        Arrays.sort(nodeArray, new Comparator<Node>() {
+            @Override
+            public int compare(Node m, Node n) {
+                int mValue = m.getValue();
+                int nValue = n.getValue();
+                return (mValue < nValue ? -1 : (mValue == nValue) ? 0 : 1);
+            }
+        });
+
+        // Reassigning positions in the tree so as to create a Min Heap
+        for(int i = 0 ;i < numNodes ; i++) {
+            int leftChildIndex = 2 * i;
+            int rightChildIndex = leftChildIndex + 1;
+            nodeArray[i].setLeftChild(leftChildIndex >= numNodes ? null : nodeArray[leftChildIndex]);
+            nodeArray[i].setRightChild(rightChildIndex >= numNodes ? null : nodeArray[rightChildIndex]);
+        }
+    }
+
+    private int traverse(Node node, int count, Node[] arr) {
+        if(node == null)
+            return count;
+        if(arr != null)
+            arr[count] = node;
+        count++;
+        count = traverse(node.getLeftChild(), count, arr);
+        // Note that though the value of count is reassigned it is also passed as the
+        // argument for traverse in the line below, so no data is lost
+        count = traverse(node.getRightChild(), count, arr);
+        return count;
+    }
+
+
+    /*
+    * Function : getSuccessor(value of the node whose successor is to be found)
+    * -------------------------------------------------------------------------------------------
+    * Successor of a node is a node whose value is consecutively greater than the concerned node
+    * and is present in the tree.
+    * This function returns such Node<Integer> if found null otherwise.
+     */
+    public Node<Integer> getSuccessor(int nodeValue) {
+        // Find the node with the given value
+        // check if the found node has a right child, if it has then that is where we will find the successor
+        // if not then we will have to do something else
+    }
 
     //////////////////////// PRIVATE METHODS
 
