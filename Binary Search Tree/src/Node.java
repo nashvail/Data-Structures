@@ -8,10 +8,10 @@
  */
 public class Node<Integer> {
 
-    int value;
-    Node<Integer> parent;
-    Node<Integer> leftChild;
-    Node<Integer> rightChild;
+    private int value;
+    private Node<Integer> parent;
+    private Node<Integer> leftChild;
+    private Node<Integer> rightChild;
 
     /*
     * Default constructor

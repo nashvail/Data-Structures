@@ -10,12 +10,14 @@
 	* Generic Tree (Java)
 	
 	* Binary Search Tree (Java)
-		* Recursive calculation of Tree Height
-		* Recursive Traversals (Pre Order)
-		* Non Recursive Traversals (Pre Order)
+		* **Recursive calculation of Tree Height**
+		* **Non Recursive Traversals (Pre Order)**
+		* **Find Lowest Common Ancestor (Non-Recursive)**
+		* **Reorder Tree Into Heap(Min) (Via Array)**
+		* **Find Successor of given node (Non-Recursive)**
 		* Find node with given value (Non-Recursive)
-		* Find Lowest Common Ancestor (Non-Recursive)
-		* Reorder Tree Into Heap(Min) (Via Array)
+		* Find node with minimum value (Recursive)
+		* Recursive Traversals (Pre Order)
 
 #To Do
 * Implement Recursive versions of Non-Recurisve methods

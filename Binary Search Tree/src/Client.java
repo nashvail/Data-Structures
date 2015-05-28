@@ -11,7 +11,7 @@ public class Client {
         tree.add(4);
         tree.add(5);
 
-        System.out.println(tree.findNode(4).getParent().getValue());
+        System.out.println(tree.getSuccessor(5).getValue());
         // output : 6
     }
 }

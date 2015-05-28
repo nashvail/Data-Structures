@@ -209,17 +209,36 @@ public class BST<Integer> {
 
     /*
     * Function : getSuccessor(value of the node whose successor is to be found)
-    * -------------------------------------------------------------------------------------------
-    * Successor of a node is a node whose value is consecutively greater than the concerned node
+    * -----------------------------------------------------------------------------------------------------------
+    * Successor of a node is a node whose value is consecutively greater than the node whose succ. is to be found
     * and is present in the tree.
     * This function returns such Node<Integer> if found null otherwise.
-     */
+    */
     public Node<Integer> getSuccessor(int nodeValue) {
-        // Find the node with the given value
-        // check if the found node has a right child, if it has then that is where we will find the successor
-        // if not then we will have to do something else
+        // List of variable names that didn't make the cut :  findSuccessorOf, toFindSuccessorOf, NodeToFindSuccessorOf,
+        // findMySuccessor
+        Node<Integer> currentNode = findNode(nodeValue);
+        if(currentNode.getRightChild() != null) return findMinNode(currentNode.getRightChild());
 
-        return null;
+        Node<Integer> currentParent = currentNode.getParent();
+        // Continue looking up the tree until the currentNode becomes leftChild of currentParent(sounds weird but, believe me)
+        // or currentNode has no parent (rootNode is reached)
+        while(currentParent != null && currentParent.getRightChild() == currentNode) {
+            currentNode = currentParent;
+            currentParent = currentNode.getParent();
+        }
+        return currentParent;
+    }
+
+    /*
+    * Function : findMinNode(Node from which to begin search from)
+    * ----------------------------------------------------------------
+    * Returns the node with minimum value that is found from the node
+    * startNode that is supplied as the argument.
+    */
+    public Node<Integer> findMinNode(Node<Integer> startNode) {
+        if(startNode.getLeftChild() == null) return startNode;
+        return findMinNode(startNode.getLeftChild());
     }
 
     //////////////////////// PRIVATE METHODS
