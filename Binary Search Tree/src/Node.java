@@ -9,6 +9,7 @@
 public class Node<Integer> {
 
     int value;
+    Node<Integer> parent;
     Node<Integer> leftChild;
     Node<Integer> rightChild;
 
@@ -26,6 +27,7 @@ public class Node<Integer> {
     */
     public Node(int data) {
         value = data;
+        parent = null;
         leftChild = null;
         rightChild = null;
     }
@@ -80,5 +82,20 @@ public class Node<Integer> {
         return rightChild;
     }
 
+    /*
+    * Function : getParent();
+    * ------------------------------------
+    */
+    public Node<Integer> getParent() {
+        return parent;
+    }
+
+    /*
+    * Function : setParent(Node<Integer> parent node);
+    * -----------------------------------------------
+    */
+    public void setParent(Node<Integer> parentNode){
+        parent = parentNode;
+    }
 
 }

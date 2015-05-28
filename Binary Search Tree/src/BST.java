@@ -218,6 +218,8 @@ public class BST<Integer> {
         // Find the node with the given value
         // check if the found node has a right child, if it has then that is where we will find the successor
         // if not then we will have to do something else
+
+        return null;
     }
 
     //////////////////////// PRIVATE METHODS
@@ -257,6 +259,7 @@ public class BST<Integer> {
         if (newNode.getValue() < currentParent.getValue()) {
             if(currentParent.getLeftChild() == null) {
                 currentParent.setLeftChild(newNode);
+                newNode.setParent(currentParent);
             } else {
                 insertNode(currentParent.getLeftChild(), newNode);
             }
@@ -264,6 +267,7 @@ public class BST<Integer> {
         } else if(newNode.getValue() > currentParent.getValue()){
             if(currentParent.getRightChild() == null) {
                 currentParent.setRightChild(newNode);
+                newNode.setParent(currentParent);
             } else {
                 insertNode(currentParent.getRightChild(), newNode);
             }
