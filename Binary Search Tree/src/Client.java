@@ -10,8 +10,10 @@ public class Client {
         tree.add(6);
         tree.add(4);
         tree.add(5);
+        tree.add(1);
+        tree.add(14);
 
-        System.out.println(tree.getSuccessor(5).getValue());
-        // output : 6
+        System.out.println(tree.getPredecessor(6).getValue());
+        // output : 5
     }
 }

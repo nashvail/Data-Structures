@@ -230,6 +230,28 @@ public class BST<Integer> {
         return currentParent;
     }
 
+
+    /*
+    * Function : getPredecessor(value of the node whose predecessor is to be found)
+    * -------------------------------------------------------------------------------------------------------------
+    * Predecessor of a node is a node whose value is consecutively smaller than the node whose pred. is to be found
+    * and is present in the tree.
+    * This function returns such Node<Integer> if found null otherwise.
+    */
+    public Node<Integer> getPredecessor(int nodeValue) {
+        Node<Integer> currentNode = findNode(nodeValue);
+
+        Node<Integer> currentParent = currentNode.getParent();
+        if(currentNode.getLeftChild() != null) return findMaxNode(currentNode.getLeftChild());
+        while(currentParent != null && currentParent.getLeftChild() == currentNode) {
+            currentNode = currentParent;
+            currentParent = currentNode.getParent();
+
+        }
+
+        return currentParent;
+    }
+
     /*
     * Function : findMinNode(Node from which to begin search from)
     * ----------------------------------------------------------------
@@ -239,6 +261,17 @@ public class BST<Integer> {
     public Node<Integer> findMinNode(Node<Integer> startNode) {
         if(startNode.getLeftChild() == null) return startNode;
         return findMinNode(startNode.getLeftChild());
+    }
+
+    /*
+    * Function : findMaxNode(Node from which to begin search from)
+    * ----------------------------------------------------------------
+    * Returns the node with maximum value that is found from the node
+    * startNode that is supplied as the argument.
+    */
+    public Node<Integer> findMaxNode(Node<Integer> startNode) {
+        if(startNode.getRightChild() == null) return startNode;
+        return findMinNode(startNode.getRightChild());
     }
 
     //////////////////////// PRIVATE METHODS
