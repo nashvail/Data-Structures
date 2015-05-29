@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/BST.java" description="insertNode(currentParent.getRightChild(), newNode)..." line="331" />
+    <bookmark url="file://$PROJECT_DIR$/src/BST.java" description="insertNode(currentParent.getRightChild(), newNode)..." line="335" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3bc46ca0-bcf8-4349-9d3b-aca6b5a6ade3" name="Default" comment="" />
@@ -41,8 +41,8 @@
       <file leaf-file-name="BST.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/BST.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35370153" vertical-offset="4935" max-vertical-offset="7414">
-              <caret line="238" column="70" selection-start-line="238" selection-start-column="70" selection-end-line="238" selection-end-column="70" />
+            <state vertical-scroll-proportion="0.8014101" vertical-offset="4488" max-vertical-offset="7502">
+              <caret line="235" column="4" selection-start-line="235" selection-start-column="4" selection-end-line="235" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#321#322#0" expanded="true" />
@@ -79,8 +79,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Node.java" />
-        <option value="$PROJECT_DIR$/src/BST.java" />
         <option value="$PROJECT_DIR$/src/Client.java" />
+        <option value="$PROJECT_DIR$/src/BST.java" />
       </list>
     </option>
   </component>
@@ -939,8 +939,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BST.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35370153" vertical-offset="4935" max-vertical-offset="7414">
-          <caret line="238" column="70" selection-start-line="238" selection-start-column="70" selection-end-line="238" selection-end-column="70" />
+        <state vertical-scroll-proportion="0.8014101" vertical-offset="4488" max-vertical-offset="7502">
+          <caret line="235" column="4" selection-start-line="235" selection-start-column="4" selection-end-line="235" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#321#322#0" expanded="true" />

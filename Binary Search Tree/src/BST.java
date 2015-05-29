@@ -207,6 +207,7 @@ public class BST<Integer> {
     }
 
 
+    // TODO : Handle Node not found by throwing an error.
     /*
     * Function : getSuccessor(value of the node whose successor is to be found)
     * -----------------------------------------------------------------------------------------------------------
@@ -219,6 +220,7 @@ public class BST<Integer> {
         // findMySuccessor
         Node<Integer> currentNode = findNode(nodeValue);
         if(currentNode.getRightChild() != null) return findMinNode(currentNode.getRightChild());
+        if(currentNode == null) return null;
 
         Node<Integer> currentParent = currentNode.getParent();
         // Continue looking up the tree until the currentNode becomes leftChild of currentParent(sounds weird but, believe me)
@@ -231,6 +233,7 @@ public class BST<Integer> {
     }
 
 
+    // TODO : Handle Node not found by throwing an error.
     /*
     * Function : getPredecessor(value of the node whose predecessor is to be found)
     * -------------------------------------------------------------------------------------------------------------
@@ -240,6 +243,7 @@ public class BST<Integer> {
     */
     public Node<Integer> getPredecessor(int nodeValue) {
         Node<Integer> currentNode = findNode(nodeValue);
+        if(currentNode == null) return null;
 
         Node<Integer> currentParent = currentNode.getParent();
         if(currentNode.getLeftChild() != null) return findMaxNode(currentNode.getLeftChild());
