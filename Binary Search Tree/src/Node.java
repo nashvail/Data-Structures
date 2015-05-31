@@ -98,4 +98,33 @@ public class Node<Integer> {
         parent = parentNode;
     }
 
+    /*
+    * Function : getOnlyChild()
+    * ------------------------------------------------------
+    * Return the single child either left or right whichever
+    * is present of this node.
+    * This method works on nodes with a single child only.
+    * Throws an error otherwise
+    */
+    public Node<Integer> getOnlyChild() {
+        if(this.getNumChildren() != 1) {
+            // this node either has no children or has more than a single(only) child
+            throw new Error("Attempt to get only child from a non eligible parent");
+        }
+
+        return (rightChild == null ? leftChild : rightChild);
+    }
+
+    /*
+    * Function : getNumChildren()
+    * ---------------------------------------
+    * Returns number of children the current
+    * node has.
+    */
+    public int getNumChildren() {
+        int numChildren = 0;
+        if(leftChild != null) numChildren++;
+        if(rightChild != null) numChildren++;
+        return numChildren;
+    }
 }

@@ -10,7 +10,9 @@ import java.util.Arrays;
  */
 public class BST<Integer> {
     private Node<Integer> root;
-
+    private static final int LEFT = 0;
+    private static final int RIGHT = 1;
+    private static final int NOT_FOUND = -1;
 
     /*
     * Default constructor
@@ -27,29 +29,29 @@ public class BST<Integer> {
 
 
     /*
-    * Function : addNode(Node to be added to the tree)
+    * Function : insertNode(Node to be added to the tree)
     * --------------------------------------------------
     * Takes in a Node<Integer> as argument, adds that node
     * to the tree.
     */
-    public void addNode(Node<Integer> newNode) {
+    public void insertNode(Node<Integer> newNode) {
         if(root == null) {
             root = newNode;
         } else {
-            insertNode(root, newNode);
+            recInsertNode(root, newNode);
         }
     }
 
 
     /*
-    * Function : add(Value that is to be added)
+    * Function : insert(Value that is to be added)
     * ----------------------------------------------
     * Creates a new node implicitly with value equal
     * to what is passed as the argument.
     * Adds the newly created node to the tree.
      */
-    public void add(int value) {
-        addNode(new Node<Integer>(value));
+    public void insert(int value) {
+        insertNode(new Node<Integer>(value));
     }
 
 
@@ -86,18 +88,18 @@ public class BST<Integer> {
     }
 
     /*
-    * Function : findNode(Value of the node that is to be found)
+    * Function : getNode(Value of the node that is to be found)
     * ---------------------------------------------------------
     * Returns Node<Integer> which holds value equal to the one
     * that is supplied in the argument.
     * Returns null if no such node is found.
     * Is non-recursive, avoids call stack memory overhead
     */
-    public Node<Integer> findNode(int searchValue) {
+    public Node<Integer> getNode(int searchValue) {
         Node<Integer> currentNode = root;
         while(currentNode != null) {
             int currentNodeValue = currentNode.getValue();
-            if(currentNodeValue == searchValue)
+            if(searchValue == currentNodeValue)
                 return currentNode;
             else if(searchValue < currentNodeValue)
                 currentNode = currentNode.getLeftChild();
@@ -107,6 +109,26 @@ public class BST<Integer> {
 
         // if no node with given value is found
         return null;
+    }
+
+    /*
+    * Function : delete(value of the node that is to be removed)
+    * ----------------------------------------------------------------
+    * Removes the node with the value that is equal to what is passed
+    * as the parameter. Rearranges the tree after removal.
+    */
+    public void delete(int deletionNodeValue) {
+        Node<Integer> nodeToBeDeleted = getNode(deletionNodeValue);
+        if(nodeToBeDeleted == null) return; // No node with such value exists throw and error
+        if(isLeafNode(nodeToBeDeleted)) {
+            nodeToBeDeleted = null;
+        } else if (nodeToBeDeleted.getNumChildren() == 1) {
+            bypassNode(nodeToBeDeleted);
+        }else {
+            // we will replace the node with its successor
+        }
+
+
     }
 
     /*
@@ -218,7 +240,7 @@ public class BST<Integer> {
     public Node<Integer> getSuccessor(int nodeValue) {
         // List of variable names that didn't make the cut :  findSuccessorOf, toFindSuccessorOf, NodeToFindSuccessorOf,
         // findMySuccessor
-        Node<Integer> currentNode = findNode(nodeValue);
+        Node<Integer> currentNode = getNode(nodeValue);
         if(currentNode.getRightChild() != null) return findMinNode(currentNode.getRightChild());
         if(currentNode == null) return null;
 
@@ -242,7 +264,7 @@ public class BST<Integer> {
     * This function returns such Node<Integer> if found null otherwise.
     */
     public Node<Integer> getPredecessor(int nodeValue) {
-        Node<Integer> currentNode = findNode(nodeValue);
+        Node<Integer> currentNode = getNode(nodeValue);
         if(currentNode == null) return null;
 
         Node<Integer> currentParent = currentNode.getParent();
@@ -307,17 +329,17 @@ public class BST<Integer> {
 
 
     /*
-    * Function : insertNode(Parent under consideration, Node to be inserted)
+    * Function : recInsertNode(Parent under consideration, Node to be inserted)
     * ----------------------------------------------------------------------
     * Recursively inserts a new node at its proper place in the tree.
     */
-    private void insertNode(Node<Integer> currentParent, Node<Integer> newNode) {
+    private void recInsertNode(Node<Integer> currentParent, Node<Integer> newNode) {
         if (newNode.getValue() < currentParent.getValue()) {
             if(currentParent.getLeftChild() == null) {
                 currentParent.setLeftChild(newNode);
                 newNode.setParent(currentParent);
             } else {
-                insertNode(currentParent.getLeftChild(), newNode);
+                recInsertNode(currentParent.getLeftChild(), newNode);
             }
 
         } else if(newNode.getValue() > currentParent.getValue()){
@@ -325,11 +347,48 @@ public class BST<Integer> {
                 currentParent.setRightChild(newNode);
                 newNode.setParent(currentParent);
             } else {
-                insertNode(currentParent.getRightChild(), newNode);
+                recInsertNode(currentParent.getRightChild(), newNode);
             }
         } else {
             // Avoid duplicate entries : ignore the input
         }
     }
 
+    // Checks if node is a leaf node that is it has no children
+    private boolean isLeafNode(Node<Integer> node) {
+        return (node.getNumChildren() == 0);
+    }
+
+    private int getChildLocation(Node<Integer> parentNode, Node<Integer> childNode) {
+        if(parentNode.getLeftChild() == childNode)
+            return LEFT;
+        else if(parentNode.getRightChild() == childNode)
+            return RIGHT;
+        else
+            return NOT_FOUND;
+    }
+
+
+    /*
+    * Function : byPassNode(Node<Integer> to bypass)
+    * ----------------------------------------------------------------------
+    * Only nodes with single child can be bypassed.
+    * Bypassing means getting rid of the node and attaching this node's child
+    * directly to this node's parent.
+    * Parent->Node->Child (becomes) Parent->Child and node is gotten rid of.
+    */
+    private void bypassNode(Node<Integer> nodeToBypass) {
+        Node<Integer> nodeParent = nodeToBypass.getParent();
+        Node<Integer> nodeChild = nodeToBypass.getOnlyChild();
+
+        // If node to bypass is left child of its parent we will make
+        // its child new left child of its parent since we will be getting rid of it.
+        // Similar procedure if it is the right child.
+        if(getChildLocation(nodeParent, nodeToBypass) == LEFT)
+            nodeParent.setLeftChild(nodeChild);
+        else
+            nodeParent.setRightChild(nodeChild);
+
+        nodeToBypass = null;
+    }
 }

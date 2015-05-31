@@ -4,16 +4,15 @@
 public class Client {
     public static void main(String[] args) {
         BST<Integer> tree = new BST<Integer>();
-        tree.add(8);
-        tree.add(9);
-        tree.add(10);
-        tree.add(6);
-        tree.add(4);
-        tree.add(5);
-        tree.add(1);
-        tree.add(14);
+        tree.insert(5);
+        tree.insert(8);
+        tree.insert(3);
+        tree.insert(1);
+        tree.insert(14);
+        tree.insert(16);
 
-        System.out.println(tree.getPredecessor(6).getValue());
-        // output : 5
+        tree.delete(8);
+        int value = tree.getRootNode().getRightChild().getValue(); // 14
+        System.out.println(value);
     }
 }
