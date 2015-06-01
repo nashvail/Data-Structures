@@ -121,14 +121,12 @@ public class BST<Integer> {
         Node<Integer> nodeToBeDeleted = getNode(deletionNodeValue);
         if(nodeToBeDeleted == null) return; // No node with such value exists throw and error
         if(isLeafNode(nodeToBeDeleted)) {
-            nodeToBeDeleted = null;
+            detachAndRemove(nodeToBeDeleted);
         } else if (nodeToBeDeleted.getNumChildren() == 1) {
             bypassNode(nodeToBeDeleted);
         }else {
-            // we will replace the node with its successor
+            replace(nodeToBeDeleted, getSuccessor(nodeToBeDeleted.getValue()));
         }
-
-
     }
 
     /*
@@ -359,6 +357,14 @@ public class BST<Integer> {
         return (node.getNumChildren() == 0);
     }
 
+    /*
+    * Function : getChildLocation(parent, child)
+    * -------------------------------------------------
+    * Returns RIGHT if child is rightChild of parent
+    * LEFT if left Child and NOT_FOUND if child is not
+    * an actual child of parent.
+    * LEFT, RIGHT, NOT_FOUND are defined constants
+    */
     private int getChildLocation(Node<Integer> parentNode, Node<Integer> childNode) {
         if(parentNode.getLeftChild() == childNode)
             return LEFT;
@@ -368,6 +374,12 @@ public class BST<Integer> {
             return NOT_FOUND;
     }
 
+
+    private void replace(Node<Integer> nodeToReplace, Node<Integer> replacementNode) {
+        // All we will need to do here is switch the values of node
+        nodeToReplace.setValue(replacementNode.getValue());
+        detachAndRemove(replacementNode);
+    }
 
     /*
     * Function : byPassNode(Node<Integer> to bypass)
@@ -389,6 +401,14 @@ public class BST<Integer> {
         else
             nodeParent.setRightChild(nodeChild);
 
-        nodeToBypass = null;
+        detachAndRemove(nodeToBypass);
+    }
+
+
+    private void detachAndRemove(Node<Integer> nodeToRemove) {
+        if(getChildLocation(nodeToRemove.getParent(), nodeToRemove) == LEFT)
+            nodeToRemove.getParent().setLeftChild(null);
+        else
+            nodeToRemove.getParent().setRightChild(null);
     }
 }
