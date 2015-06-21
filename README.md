@@ -16,6 +16,7 @@
 		* **Reorder Tree Into Heap(Min) (Via Array)**
 		* **Find Successor of given node (Non-Recursive)**
 		* **Find Predecessor of a given node (Non-Recursive)**
+		* **Remove Node and rearrange the tree**
 		* Find node with given value (Non-Recursive)
 		* Find node with minimum value (Recursive)
 		* Recursive Traversals (Pre Order)
