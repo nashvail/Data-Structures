@@ -20,5 +20,7 @@
 		* Find node with minimum value (Recursive)
 		* Recursive Traversals (Pre Order)
 
+	##Priority Queue-Max (C++)
+		
 #To Do
 * Implement Recursive versions of Non-Recurisve methods
