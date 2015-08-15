@@ -151,6 +151,18 @@ public class BST<Integer> {
 
     }
 
+    public void nonRecursiveInOrderTraversal() {
+        Stack<Node<Integer>> nodeStack = new Stack<Node<Integer>>();
+        Node<Integer> currentNode = root;
+        boolean done = false;
+
+        while(!done) {
+            nodeStack.push(currentNode);
+            currentNode = currentNode.getLeftChild();
+        }
+    }
+
+
     /*
     * Function : preorderTraversal()
     * -------------------------------------------------------
@@ -160,6 +172,23 @@ public class BST<Integer> {
     public void preorderTraversal() {
         recPreorderTraversal(root);
     }
+
+    /*
+    * Function : postOrderTraversal()
+    * ------------------------------------------
+    */
+    public void postorderTraversal() {
+        recPostorderTraversal(root);
+    }
+
+    /*
+    * Function : inorderTraversal()
+    */
+    public void inorderTraversal() {
+        recInorderTraversal(root);
+    }
+
+
 
     /*
     * Function : getTreeHeight()
@@ -300,6 +329,13 @@ public class BST<Integer> {
 
     //////////////////////// PRIVATE METHODS
 
+    /*
+    * Since this s pre order traversal here are the steps
+    * Visit the root node, print its value
+    * Then visit the left node and print its value
+    * Then visit the right node and print its value
+    * (This happens in clockwise fashion starting from the root node)
+    */
     private void recPreorderTraversal(Node<Integer> currentNode) {
         if(currentNode == null) return;
 
@@ -308,13 +344,42 @@ public class BST<Integer> {
         recPreorderTraversal(currentNode.getRightChild());
     }
 
+    /*
+    * Steps for post order traversal
+    * Visit the left node print its value
+    * Visit the right node print its value
+    * Then visit the root node and print its value
+    * (Like in a anticlockwise fashion starting from the left child)
+     */
+    private void recPostorderTraversal(Node<Integer> currentNode) {
+        if(currentNode == null) return;
+
+        recPostorderTraversal(currentNode.getLeftChild());
+        recPostorderTraversal(currentNode.getRightChild());
+        System.out.println(currentNode.getValue());
+    }
+
+    /*
+    * Steps for in order traversal
+    * Visit the left child print its value
+    * Visit the root node and pritn its value
+    * Visit the right node and then print its value
+    */
+    private void recInorderTraversal(Node<Integer> currentNode) {
+        if(currentNode == null) return;
+
+        recInorderTraversal(currentNode.getLeftChild());
+        System.out.println(currentNode.getValue());
+        recInorderTraversal(currentNode.getRightChild());
+    }
+
 
     /*
     * Function : calculateTreeHeight(Node<Integer>)
     * ----------------------------------------------------
     * Recursive method to calculate the Tree's height. Height
     * of a tree is defined as the maximum distance between the
-    * root node and any one of the leaf nodes.
+    * root node and it's farthest leaf nodes.
     * Recursively : Height of the tree is equal to, 1 + height
     * of the tallest subtree.
      */

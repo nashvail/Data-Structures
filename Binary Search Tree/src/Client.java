@@ -14,7 +14,6 @@ public class Client {
         tree.insert(6);
         tree.insert(5);
 
-        tree.delete(3);
-        System.out.println(tree.getRootNode().getLeftChild().getRightChild().getValue());
+        tree.nonRecursiveInOrderTraversal();
     }
 }
