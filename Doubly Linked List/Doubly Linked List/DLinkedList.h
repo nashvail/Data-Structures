@@ -18,12 +18,17 @@ struct DLLNode {
     struct DLLNode * prev;
 };
 
+int isOutOfBounds(struct DLLNode * head, int position);
 void printNodeData(struct DLLNode * node);
 void printList(struct DLLNode * head);
 int listLength(struct DLLNode * head);
 struct DLLNode * getNewNode(int data);
 struct DLLNode * getNodeAt(struct DLLNode * head, int position);
+int insertingAtEnd(struct DLLNode * node);
 void insertAt(struct DLLNode ** head, int data, int position);
+void insertInBeginning(struct DLLNode ** head, int data);
+void insertAtEnd(struct DLLNode ** head, int data);
+void insert(struct DLLNode ** head, int data);
 
 #endif /* defined(__Doubly_Linked_List__DLinkedList__) */
 

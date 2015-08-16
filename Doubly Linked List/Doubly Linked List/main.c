@@ -9,12 +9,15 @@
 #include <stdio.h>
 #include "DLinkedList.h"
 
+// Function Prototypes
+
 int main(int argc, const char * argv[]) {
     struct DLLNode * head = NULL;
-    insertAt(&head, 20, 0);
-    insertAt(&head, 10, 0);
-    insertAt(&head, 15, 1);
+    insert(&head, 0);
+    insert(&head, 10);
     printList(head);
     
     return 0;
 }
+
+

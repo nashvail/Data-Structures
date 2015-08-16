@@ -22,25 +22,32 @@ int listLength(struct DLLNode * head) {
 }
 
 void insertAt(struct DLLNode ** head, int data, int position) {
+    if( isOutOfBounds(*head, position) ) {
+        printf("\n ERROR : Invalid position Passed \n");
+        return;
+    }
+    
     if (*head == NULL) {
         *head = getNewNode(data);
-    } else if (position == 0) {
-        struct DLLNode * newNode = getNewNode(data);
-        newNode->next = *head;
-        (*head)->prev = newNode;
-        *head = newNode;
     } else {
+        
+        struct DLLNode * prevNodeCurrentPos = getNodeAt(*head, position - 1);
         struct DLLNode * newNode = getNewNode(data);
-        struct DLLNode * prevNode = getNodeAt(*head, position - 1);
         
-        // Take care of the right side wiring
-        newNode->next = prevNode->next;
-        prevNode->next->prev = newNode;
-        
-        // Take care of the left side wiring
-        prevNode->next = newNode;
-        newNode->prev = prevNode;
-        
+        if ( insertingAtEnd(prevNodeCurrentPos) ) { // Insertion at the end of the list
+            newNode->prev = prevNodeCurrentPos;
+            prevNodeCurrentPos->next = newNode;
+        } else if (position == 0) { // Insertion at beginning of the list
+            newNode->next = *head;
+            (*head)->prev = newNode;
+            *head = newNode;
+        } else { // Insertion in the middle of the list
+            newNode->prev = prevNodeCurrentPos;
+            newNode->next = prevNodeCurrentPos->next;
+            
+            prevNodeCurrentPos->next = newNode;
+            (newNode->next)->prev = newNode;
+        }
         
     }
     
@@ -83,4 +90,31 @@ void printList(struct DLLNode * head) {
 
 void printNodeData(struct DLLNode * node) {
     printf(" =| %d |", node->data);
+}
+
+void insertInBeginning(struct DLLNode ** head, int data) {
+    insertAt(head, data, 0);
+}
+
+void insertAtEnd(struct DLLNode ** head, int data) {
+    int length = listLength(*head);
+    insertAt(head, data, length);
+}
+
+void insert(struct DLLNode ** head, int data) {
+    insertAtEnd(head, data);
+}
+
+int insertingAtEnd(struct DLLNode * node) {
+    if (node->next == NULL) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+int isOutOfBounds(struct DLLNode * head, int position) {
+    int length = listLength(head);
+    if(position < 0 || position > length + 1 ) return 1;
+    else return 0;
 }
