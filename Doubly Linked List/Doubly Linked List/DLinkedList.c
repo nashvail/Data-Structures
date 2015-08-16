@@ -34,7 +34,7 @@ void insertAt(struct DLLNode ** head, int data, int position) {
         struct DLLNode * prevNodeCurrentPos = getNodeAt(*head, position - 1);
         struct DLLNode * newNode = getNewNode(data);
         
-        if ( insertingAtEnd(prevNodeCurrentPos) ) { // Insertion at the end of the list
+        if ( isTailNode(prevNodeCurrentPos) ) { // Insertion at the end of the list
             newNode->prev = prevNodeCurrentPos;
             prevNodeCurrentPos->next = newNode;
         } else if (position == 0) { // Insertion at beginning of the list
@@ -105,8 +105,17 @@ void insert(struct DLLNode ** head, int data) {
     insertAtEnd(head, data);
 }
 
-int insertingAtEnd(struct DLLNode * node) {
+int isTailNode(struct DLLNode * node) {
+    // You can't do something like return (node->next == NUL) in this bullshit language
     if (node->next == NULL) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+int isHeadNode(struct DLLNode * node) {
+    if (node->prev == NULL) {
         return 1;
     } else {
         return 0;
@@ -117,4 +126,38 @@ int isOutOfBounds(struct DLLNode * head, int position) {
     int length = listLength(head);
     if(position < 0 || position > length + 1 ) return 1;
     else return 0;
+}
+
+void deleteAt(struct DLLNode ** head, int position) {
+    if (*head == NULL || isOutOfBounds(*head, position)) {
+        printf("\n ERROR: List empty or invalid position passed");
+        return;
+    }
+    
+    struct DLLNode * nodeToDelete = getNodeAt(*head, position);
+    if (isTailNode(nodeToDelete)) { // Deletion at end
+        (nodeToDelete->prev)->next = NULL;
+        free(nodeToDelete);
+    } else if(isHeadNode(nodeToDelete)) { // Deletion at the beginning
+        struct DLLNode * headAlias = *head;
+        *head = (*head)->next;
+        free(headAlias);
+    } else { // Deletion in the middle of the list
+        (nodeToDelete->prev)->next = nodeToDelete->next;
+        (nodeToDelete->next)->prev = nodeToDelete->prev;
+        free(nodeToDelete);
+    }
+}
+
+void deleteInBeginning(struct DLLNode ** head) {
+    deleteAt(head, 0);
+}
+
+void deleteAtEnd(struct DLLNode ** head) {
+    int length = listLength(*head);
+    deleteAt(head, length - 1);
+}
+
+void delete(struct DLLNode ** head) {
+    deleteAtEnd(head);
 }

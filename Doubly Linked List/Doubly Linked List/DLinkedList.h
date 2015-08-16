@@ -24,11 +24,18 @@ void printList(struct DLLNode * head);
 int listLength(struct DLLNode * head);
 struct DLLNode * getNewNode(int data);
 struct DLLNode * getNodeAt(struct DLLNode * head, int position);
-int insertingAtEnd(struct DLLNode * node);
+int isTailNode(struct DLLNode * node);
+int isHeadNode(struct DLLNode * head);
 void insertAt(struct DLLNode ** head, int data, int position);
 void insertInBeginning(struct DLLNode ** head, int data);
 void insertAtEnd(struct DLLNode ** head, int data);
 void insert(struct DLLNode ** head, int data);
+
+// Functions for deletions
+void deleteAt(struct DLLNode ** head, int position);
+void deleteInBeginning(struct DLLNode ** head);
+void deleteAtEnd(struct DLLNode ** head);
+void delete(struct DLLNode ** head);
 
 #endif /* defined(__Doubly_Linked_List__DLinkedList__) */
 
