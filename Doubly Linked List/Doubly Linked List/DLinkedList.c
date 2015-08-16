@@ -9,17 +9,7 @@
 #include "DLinkedList.h"
 #include <stdlib.h>
 
-int listLength(struct DLLNode * head) {
-    if ( head == NULL ) return 0;
-    struct DLLNode * currentNode = head;
-    int numNodes = 0;
-    while (currentNode) {
-        currentNode = currentNode->next;
-        numNodes++;
-    }
-    
-    return numNodes;
-}
+int list_size = 0;
 
 void insertAt(struct DLLNode ** head, int data, int position) {
     if( isOutOfBounds(*head, position) ) {
@@ -29,6 +19,7 @@ void insertAt(struct DLLNode ** head, int data, int position) {
     
     if (*head == NULL) {
         *head = getNewNode(data);
+        list_size++;
     } else {
         
         struct DLLNode * prevNodeCurrentPos = getNodeAt(*head, position - 1);
@@ -49,6 +40,7 @@ void insertAt(struct DLLNode ** head, int data, int position) {
             (newNode->next)->prev = newNode;
         }
         
+        list_size++;
     }
     
 }
@@ -97,8 +89,7 @@ void insertInBeginning(struct DLLNode ** head, int data) {
 }
 
 void insertAtEnd(struct DLLNode ** head, int data) {
-    int length = listLength(*head);
-    insertAt(head, data, length);
+    insertAt(head, data, list_size);
 }
 
 void insert(struct DLLNode ** head, int data) {
@@ -123,8 +114,7 @@ int isHeadNode(struct DLLNode * node) {
 }
 
 int isOutOfBounds(struct DLLNode * head, int position) {
-    int length = listLength(head);
-    if(position < 0 || position > length + 1 ) return 1;
+    if(position < 0 || position > list_size + 1 ) return 1;
     else return 0;
 }
 
@@ -147,6 +137,8 @@ void deleteAt(struct DLLNode ** head, int position) {
         (nodeToDelete->next)->prev = nodeToDelete->prev;
         free(nodeToDelete);
     }
+    
+    list_size--;
 }
 
 void deleteInBeginning(struct DLLNode ** head) {
@@ -154,8 +146,7 @@ void deleteInBeginning(struct DLLNode ** head) {
 }
 
 void deleteAtEnd(struct DLLNode ** head) {
-    int length = listLength(*head);
-    deleteAt(head, length - 1);
+    deleteAt(head, list_size - 1);
 }
 
 void delete(struct DLLNode ** head) {

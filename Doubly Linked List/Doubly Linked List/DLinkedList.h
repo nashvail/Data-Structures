@@ -11,6 +11,9 @@
 
 #include <stdio.h>
 
+// Stores the number of nodes in the list
+extern int list_size;
+
 // Structure representing a node in the Doubly Linked Lists
 struct DLLNode {
     int data;
@@ -21,7 +24,6 @@ struct DLLNode {
 int isOutOfBounds(struct DLLNode * head, int position);
 void printNodeData(struct DLLNode * node);
 void printList(struct DLLNode * head);
-int listLength(struct DLLNode * head);
 struct DLLNode * getNewNode(int data);
 struct DLLNode * getNodeAt(struct DLLNode * head, int position);
 int isTailNode(struct DLLNode * node);
