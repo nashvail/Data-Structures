@@ -11,6 +11,7 @@
 
 int main(int argc, const char * argv[]) {
     struct DLLNode * head = NULL;
+    
     insert(&head, 0);
     insert(&head, 10);
     insert(&head, 20);

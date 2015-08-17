@@ -12,7 +12,7 @@
 int list_size = 0;
 
 void insertAt(struct DLLNode ** head, int data, int position) {
-    if( isOutOfBounds(*head, position) ) {
+    if( isOutOfBounds(position) ) {
         printf("\n ERROR : Invalid position Passed \n");
         return;
     }
@@ -113,13 +113,13 @@ int isHeadNode(struct DLLNode * node) {
     }
 }
 
-int isOutOfBounds(struct DLLNode * head, int position) {
+int isOutOfBounds(int position) {
     if(position < 0 || position > list_size + 1 ) return 1;
     else return 0;
 }
 
 void deleteAt(struct DLLNode ** head, int position) {
-    if (*head == NULL || isOutOfBounds(*head, position)) {
+    if (*head == NULL || isOutOfBounds(position)) {
         printf("\n ERROR: List empty or invalid position passed");
         return;
     }
