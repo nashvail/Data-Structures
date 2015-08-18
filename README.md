@@ -11,6 +11,12 @@
 	 
 	* ##Doubly Linked List (C)
 	
+	* ##Circular Linked List (C)
+	
+	* ##Stack (Array) (C)
+
+	* ##Satck (Linked List) (C)
+	
 	* ##Generic Tree (Java)
 	
 	* ##Binary Search Tree (Java)
