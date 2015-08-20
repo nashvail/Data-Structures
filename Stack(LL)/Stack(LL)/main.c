@@ -10,7 +10,21 @@
 #include "Stack.h"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
+    
+    Stack * myStack = createNewStack();
+    push(&myStack, 42);
+    push(&myStack, 13);
+    push(&myStack, 17);
+    
+    deleteWholeStack(&myStack);
+    
+    
+    while (!isEmpty(myStack)) {
+        int currentElement = pop(&myStack);
+        printf("%d\n", currentElement);
+    }
+    
+    printf("That's all folks");
+    
     return 0;
 }

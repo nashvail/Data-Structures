@@ -9,10 +9,10 @@
 #define LINKED_LIST_H
 
 // Structure representing a single node in the linked list
-struct ListNode {
+typedef struct ListNode {
 	int data;
 	struct ListNode *next;
-};
+}Stack;
 
 /*
 * Function : printList(pointer to head node of the list)

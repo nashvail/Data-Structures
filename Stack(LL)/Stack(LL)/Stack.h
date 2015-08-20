@@ -12,7 +12,16 @@
 #include <stdio.h>
 #include "LinkedList.h"
 
-//Head node for the list
-struct ListNode * head = NULL;
+Stack * createNewStack();
+int isUnderflowCondition(Stack * stack);
+void push(Stack ** stack ,int data);
+int pop(Stack ** stack);
+int peek(Stack ** stack);
+int isEmpty(Stack * stack);
+// Removes all the elements from the stack
+void deleteWholeStack(Stack ** stack);
+
+
+
 
 #endif /* defined(__Stack_LL___Stack__) */
