@@ -17,9 +17,26 @@ struct CLLNode{
     struct CLLNode * next;
 };
 
+void printList(struct CLLNode * head);
+int listLength(struct CLLNode * head);
 
-extern int num_nodes;
+/*
+* Function : getNewCircularNode(int data)
+* ---------------------------------------
+* Returns a new circular node with the data 
+* associated with it equal to the one that is 
+* passed as the argument. 
+* A circular node is a node that has the next 
+* pointer pointing to itself.
+*/
+struct CLLNode * getNewCircularNode(int data);
 
+// Functions for insertion in the circular linked list
+// General insert at cannot be used since this linked list is circular so .... or may be we can
+void insertAt(struct CLLNode ** head, int data, int position);
+// Insert at the end
+// Insert in the beginning
+// Insert at an intermediate position;
 
 
 

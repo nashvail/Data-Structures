@@ -21,7 +21,4 @@ int isEmpty(Stack * stack);
 // Removes all the elements from the stack
 void deleteWholeStack(Stack ** stack);
 
-
-
-
 #endif /* defined(__Stack_LL___Stack__) */

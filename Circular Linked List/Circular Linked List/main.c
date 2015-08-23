@@ -7,9 +7,15 @@
 //
 
 #include <stdio.h>
+#include "CLinkedList.h"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
+    struct CLLNode * head = NULL;
+    
+    insertAt(&head, 24, 0);
+    insertAt(&head, 25, 0);
+    printList(head);
+    
+    
     return 0;
 }

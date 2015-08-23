@@ -24,7 +24,7 @@ int main(int argc, const char * argv[]) {
         printf("%d\n", currentElement);
     }
     
-    printf("That's all folks");
+    printf("That's all folks\n");
     
     return 0;
 }
