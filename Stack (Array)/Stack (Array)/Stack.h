@@ -23,7 +23,7 @@ int isEmpty(Stack * stack);
 int isFull(Stack * stack);
 void push(Stack * stack, int data);
 int pop(Stack * stack);
-void deleteStack();
 void peek(Stack * stack);
+void deleteWholeStack(Stack * stack);
 
 #endif /* defined(__Stack__Array___Stack__) */

@@ -1,8 +1,8 @@
 //
 //  main.c
-//  Stack (Array)
+//  Stack (Dynamic Array)
 //
-//  Created by Nash Vail on 18/08/15.
+//  Created by Nash Vail on 24/08/15.
 //  Copyright (c) 2015 Nishant Verma ( Nash Vail ). All rights reserved.
 //
 
@@ -10,11 +10,11 @@
 #include "Stack.h"
 
 int main(int argc, const char * argv[]) {
-    Stack * intStack = createStack(2);
-    push(intStack, 4);
+    
+    Stack * intStack = getNewStack();
+    push(intStack, 0);
     push(intStack, 10);
-    deleteWholeStack(intStack);
-    peek(intStack);
+    push(intStack, 20);
     
     return 0;
 }
