@@ -11,7 +11,7 @@
 	 
 	* ##Doubly Linked List (C)
 	
-	* ##Circular Linked List (C) [WIP]
+	* ##Circular Linked List (C)
 	
 	* ##Stack (Array) (C)
 
