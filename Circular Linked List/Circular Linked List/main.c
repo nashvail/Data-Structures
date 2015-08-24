@@ -16,6 +16,8 @@ int main(int argc, const char * argv[]) {
     insertInBeginning(&head, 0);
     insertInBeginning(&head, -10);
     insertAtEnd(&head, 20);
+    
+    deleteInBeginning(&head);
     printList(head);
     
     

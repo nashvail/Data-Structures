@@ -75,7 +75,6 @@ void insertAtEnd(struct CLLNode ** head, int data) {
     
 }
 
-
 struct CLLNode * getNewCircularNode(int data) {
     struct CLLNode * newNode = (struct CLLNode *) malloc(sizeof(struct CLLNode));
     
@@ -83,6 +82,38 @@ struct CLLNode * getNewCircularNode(int data) {
     newNode->next = newNode;
     
     return newNode;
+}
+
+void deleteAtEnd(struct CLLNode ** head) {
+    // Create two pointers and progress them one by one, while keeping one behind the other
+    struct CLLNode * oneBehindCurrent = *head, *current = *head;
+    if(*head == NULL) {
+        printf("\nThe list is empty\n");
+        return;
+    }
+    
+    while(current->next != *head) {
+        oneBehindCurrent = current;
+        current = current->next;
+    }
+    
+    oneBehindCurrent->next = current->next;
+    free(current);
+}
+
+void deleteInBeginning(struct CLLNode ** head) {
+    // Create a temporary node alias for the head node
+    struct CLLNode * headAlias = *head;
+    struct CLLNode * currentNode = *head;
+    
+    // Loop through and grab the tail pointer
+    while (currentNode->next != *head) {
+        currentNode = currentNode->next;
+    }
+    
+    currentNode->next = (*head)->next;
+    *head = (*head)->next;
+    free(headAlias);
 }
 
 
