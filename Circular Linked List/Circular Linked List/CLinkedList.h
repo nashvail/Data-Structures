@@ -31,13 +31,9 @@ int listLength(struct CLLNode * head);
 */
 struct CLLNode * getNewCircularNode(int data);
 
-// Functions for insertion in the circular linked list
-// General insert at cannot be used since this linked list is circular so .... or may be we can
-void insertAt(struct CLLNode ** head, int data, int position);
-// Insert at the end
-// Insert in the beginning
-// Insert at an intermediate position;
 
+void insertInBeginning(struct CLLNode ** head, int data);
+void insertAtEnd(struct CLLNode ** head, int data);
 
 
 #endif /* defined(__Circular_Linked_List__CLinkedList__) */

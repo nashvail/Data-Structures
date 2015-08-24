@@ -43,28 +43,38 @@ int listLength(struct CLLNode * head) {
     return count;
 }
 
-void insertAt(struct CLLNode ** head, int data, int position) {
-    if (*head == NULL) { // If there is nothing in the list yet
-        *head = getNewCircularNode(data);
-        (*head)->next = *head;
-    } else if (position == 0) { // For the insertion at beginning
-        
-        struct CLLNode * current = *head;
-        struct CLLNode * newNode = getNewCircularNode(data);
+void insertInBeginning(struct CLLNode ** head, int data) {
+    struct CLLNode * newNode = getNewCircularNode(data);
+    
+    if( *head == NULL ) {
+        *head = newNode;
+        return;
+    } else {
         newNode->next = *head;
         
-        while (current->next != *head) {
-            current = current->next;
+        struct CLLNode * currentNode = *head;
+        while(currentNode->next != *head ){
+            currentNode = currentNode->next;
         }
-        current->next = newNode;
+        
+        currentNode->next = newNode;
         *head = newNode;
-        
-    } else { // For insertion at an intermediate position
-        
+    }
+}
+
+void insertAtEnd(struct CLLNode ** head, int data) {
+    struct CLLNode * newNode = getNewCircularNode(data);
+    struct CLLNode * currentNode = *head;
+    
+    while (currentNode->next != *head) {
+        currentNode = currentNode->next;
     }
     
-    // Insertion at the end will be taken care of later
+    newNode->next = *head;
+    currentNode->next = newNode;
+    
 }
+
 
 struct CLLNode * getNewCircularNode(int data) {
     struct CLLNode * newNode = (struct CLLNode *) malloc(sizeof(struct CLLNode));

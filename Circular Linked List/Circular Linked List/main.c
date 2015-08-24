@@ -12,9 +12,12 @@
 int main(int argc, const char * argv[]) {
     struct CLLNode * head = NULL;
     
-    insertAt(&head, 24, 0);
-    insertAt(&head, 25, 0);
+    insertInBeginning(&head, 10);
+    insertInBeginning(&head, 0);
+    insertInBeginning(&head, -10);
+    insertAtEnd(&head, 20);
     printList(head);
+    
     
     
     return 0;
