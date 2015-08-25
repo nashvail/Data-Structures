@@ -18,6 +18,8 @@
 	* ##Stack (Linked List) (C)
 
 	* ##Stack (Dynamic Array) (C)
+
+	* ##Queue (Circular Array) (C)
 	
 	* ##Generic Tree (Java)
 	

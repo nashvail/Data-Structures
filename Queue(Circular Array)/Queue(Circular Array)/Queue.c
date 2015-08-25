@@ -31,12 +31,12 @@ int isEmpty(Queue * queue) {
 }
 
 int isFull(Queue * queue) {
-    // When the last element space wraps around and equates to the front
+    // If on incrementing the rear pointer it wraps around and equates to the front value then the list is full
     return (queue->rear + 1) % queue->capacity == queue->front;
 }
 
 int getQueueSize(Queue * queue) {
-    return (queue->capacity - queue->front + queue->rear + 1) % queue->capacity;
+    return ( queue->front > queue->rear ? (queue->capacity - queue->front + queue->rear + 1) : (queue->rear - queue->front + 1));
 }
 
 void enqueue(Queue * queue, int data) {
