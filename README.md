@@ -15,7 +15,9 @@
 	
 	* ##Stack (Array) (C)
 
-	* ##Satck (Linked List) (C)
+	* ##Stack (Linked List) (C)
+
+	* ##Stack (Dynamic Array) (C)
 	
 	* ##Generic Tree (Java)
 	

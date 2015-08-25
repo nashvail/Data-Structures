@@ -60,3 +60,12 @@ int peek(Stack * stack) {
         return (stack->array[stack->top]);
     }
 }
+
+void deleteWholeStack(Stack * stack) {
+    if (stack) {
+        if (stack->array) {
+            free(stack->array);
+        }
+        free(stack);
+    }
+}
