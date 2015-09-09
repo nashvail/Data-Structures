@@ -6,7 +6,11 @@
 	* ##Linked List (C++)
 		* **Mth Node from end without explicitly knowing the size of list.**
 		* **To find if the given linked list is cyclic/circular.**
-		
+	
+	* ##Stack (C++) [WIP]
+	
+	* ##Queue (C++ Ciruclar Array) [WIP]
+
 	* ##Linked List (C)
 	 
 	* ##Doubly Linked List (C)
